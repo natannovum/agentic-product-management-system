@@ -188,6 +188,20 @@ The `todo-*.md` files are the queue and carry the full weight: item, rationale, 
 
 **Change logs are append-only.** Corrections are new dated entries that supersede; never edits to past entries. Rewriting history in place destroys the record of what was believed at the time.
 
+### Todo sweep at session end
+
+Part of the end-of-session pass. **Review pending items this session touched** and resolve each one of three ways:
+
+- **Done** — remove it; the change log already records the work
+- **Superseded** — remove it, and say why in the change-log entry
+- **Relocated** — it belongs to a different concern: **move it, do not delete it**
+
+**The third case is the dangerous one.** "The work is done" and "the item is filed under the wrong concern" produce the same symptom — an item that looks irrelevant where it sits — and need opposite remedies. Confirm an item's *home* is correct before judging its *status*.
+
+Scope it to what the session touched; a full pass over a large file is its own task.
+
+**Why it exists:** in Mode B (§ Documentation Workflow) nothing closes items automatically, so they accumulate silently until the file is too large to read. A per-session sweep keeps that cost at seconds.
+
 ### Reference docs — update when relevant
 
 | File | When |

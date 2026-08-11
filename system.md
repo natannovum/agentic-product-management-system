@@ -290,7 +290,8 @@ Every working session ends by writing:
 2. **One or more change-log entries**, dated the same day, in whichever concerns were touched.
 3. **Reference-doc updates** where current-state truth changed.
 4. **Pending work recorded** — a ticket in Mode A, a todo item in Mode B — so nothing deferred is lost.
-5. **A note in the pull-request description** of which logs and docs were updated.
+5. **A todo sweep** — for pending items the session touched, remove what is done or superseded, and **move what turns out to belong to another concern.** "Done" and "filed in the wrong place" look identical from inside the wrong file and need opposite remedies, so confirm an item's home before judging its status.
+6. **A note in the pull-request description** of which logs and docs were updated.
 
 ---
 
