@@ -150,7 +150,7 @@ Rules that hold at either level:
 
 ## Documentation Workflow
 
-> **This section is the operative rules.** The reasoning behind them is in `docs/agentic-product-management-system/system.md`. Read that before *changing* the system; you do not need it to *operate* it. If the two disagree, this section wins.
+> **This section is the operative rules.** The reasoning behind them is in [`system.md`](https://github.com/natannovum/agentic-product-management-system/blob/main/system.md). Read that before *changing* the system; you do not need it to *operate* it. If the two disagree, this section wins.
 
 **Every session writes a `dev-log.md` entry** — the executive summary: assignment, reasoning, what went wrong, what was left undone. In addition, the session updates one or more change logs with the implementation detail. Cross-reference by date. In the pull-request description, report which logs and reference docs were updated.
 
@@ -242,8 +242,8 @@ Detailed specifications live in dedicated documents. Read the relevant file when
 
 | Topic | File |
 |---|---|
-| Why the documentation system is shaped this way | `docs/agentic-product-management-system/system.md` |
-| Standing the system up in a project | `docs/agentic-product-management-system/setup-protocol.md` |
+| Why the documentation system is shaped this way | [`system.md`](https://github.com/natannovum/agentic-product-management-system/blob/main/system.md) |
+| Standing the system up in a project | [`setup-protocol.md`](https://github.com/natannovum/agentic-product-management-system/blob/main/setup-protocol.md) |
 | Infrastructure, environments, pipeline | `docs/documentation-dev/infrastructure-and-repo-model.md` |
 | Codebase gotchas and edge cases | `docs/documentation-dev/codebase-tricky-parts.md` |
 | Design rationale, and options rejected | `docs/documentation-dev/design-intentions-and-rationale.md` |

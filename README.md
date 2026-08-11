@@ -27,7 +27,22 @@ Three pillars:
 
 ## Installing it
 
-Point an agent at this directory and ask it to follow `setup-protocol.md`. The short version of what it will do:
+Point a coding agent at this repository and ask it to follow `setup-protocol.md`:
+
+```
+Read https://github.com/natannovum/agentic-product-management-system
+and follow setup-protocol.md to set the system up in this project.
+```
+
+Or clone it and work locally:
+
+```bash
+git clone https://github.com/natannovum/agentic-product-management-system
+```
+
+**Only `templates/` gets copied into your project.** `system.md` and `setup-protocol.md` are reference material about the system — leave them here and link to them, rather than vendoring a copy that will drift.
+
+The short version of what the agent will do:
 
 1. **Secret handling and its enforcement hooks first.** The only item where being late is unrecoverable.
 2. **Establish what cannot be undone** in this project — the irreversibility inventory that drives the permission model. The one decision with no safe default.
@@ -62,3 +77,17 @@ Every project-specific decision is marked and has a stated default. Three deserv
 - **Which published surfaces exist, and whether any is currently authored outside the repository.** That last case inverts the source-of-truth rule and is a decision to raise, not to inherit.
 
 Nothing here is load-bearing on a particular language, framework, or hosting model. Where a rule depends on project specifics, the specifics are elicited rather than assumed.
+
+---
+
+## Contributing
+
+Issues and pull requests welcome.
+
+This system is developed **in use** rather than in the abstract — it lives inside a working product repository and is mirrored here with `git subtree`, so every refinement comes from having actually needed it. That has shaped it: the parts that are specific and opinionated are the parts that were paid for by getting something wrong first.
+
+If you adopt it and something does not fit, that is worth an issue. The `setup-protocol.md` defaults in particular are judgement calls, and the ones that turn out to be wrong for a common project shape should change.
+
+## Licence
+
+MIT — see [`LICENSE`](LICENSE).
