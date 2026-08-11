@@ -6,7 +6,7 @@ It exists because agents lose knowledge in a specific way: the code records *wha
 
 Three pillars:
 
-- **Capture** — turn development prompts, process learnings, and the implicit findings and agreements that emerge from working with an agent into durable internal reference. Including the easily-missed category: when a user corrects *how* the agent works, that is a finding, not a passing instruction, and left in the transcript it gets re-learned by re-making the mistake.
+- **Capture** — turn development prompts, process learnings, and the findings and agreements that emerge implicitly while working with an agent into durable internal reference. An agent-instruction file already covers *how* the human and agent work together; this system covers what is learned *about the product* while building it — design rationale and rejected alternatives, current and superseded implementation specs, and the gotchas where the code misleads a reader who is reasoning correctly. That knowledge has no natural home and is lost by default.
 - **Protect** — verify changes against a signal that cannot be talked out of a verdict, and prevent regressions.
 - **Propagate** — keep marketing copy, user documentation, and store listings current with each release. The pillar most often left entirely undone, because it is nobody's job and nothing fails when it is skipped.
 

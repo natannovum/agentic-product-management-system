@@ -29,7 +29,19 @@ A second problem compounds the first. A product is not only code. It has a marke
 
 Three pillars, corresponding to three ways knowledge is lost in agent-built products.
 
-**1. Capture — turn ephemeral work into durable reference.** Development prompts, process learnings, and the implicit findings and agreements that emerge from working with an agent all become internal documentation a future session can load. This last category is the most easily missed: when a user corrects *how* the agent works — a preference, a boundary, a rule about what to ask versus assume — that correction is a durable finding, not a passing instruction. It belongs in the project's rules file, and if it is left in the transcript it will be re-learned by re-making the same mistake.
+**1. Capture — turn ephemeral work into durable reference.** Development prompts, process learnings, and the findings and agreements that emerge implicitly while working with an agent all become internal documentation a future session can load.
+
+An agent-instruction file (`CLAUDE.md` or equivalent) already solves one part of this: how the human and the agent work together — permissions, communication, workflow. That is the first thing any project codifies, and it needs no system to prompt it.
+
+**This system covers the part that file does not.** Everything learned *about the product* while building it, which has no natural home and is therefore lost by default:
+
+- why a design is the way it is, and which alternatives were rejected
+- how each subsystem is currently implemented
+- how it *used to be* implemented, and why that was superseded
+- the gotchas — where the code misleads a reader who is reasoning correctly
+- the reasoning behind decisions that would otherwise be relitigated every few months
+
+The rules file says how to work. These say what was learned by working.
 
 **2. Protect — verify changes and prevent regressions.** A record of how something was verified is worth little unless verification actually happens, and happens against a signal that cannot be talked out of a verdict. The system requires every entry to state its verification and defines the principles that verification obeys (§9 of `setup-protocol.md` covers eliciting the mechanism; the principles are in `templates/CLAUDE.md`).
 
