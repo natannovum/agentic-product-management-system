@@ -25,6 +25,22 @@ The questions that recur months later are: *Why is it done this way? Did we alre
 
 A second problem compounds the first. A product is not only code. It has a marketing site, user documentation, sometimes store listings — surfaces that must stay truthful as the product changes, and that drift the moment nobody is watching. Agents are well suited to keeping these current, but only if the project records what changed in a form the agent can act on. The system treats these published surfaces as a first-class concern rather than an afterthought (§5).
 
+### What the system covers
+
+Three pillars, corresponding to three ways knowledge is lost in agent-built products.
+
+**1. Capture — turn ephemeral work into durable reference.** Development prompts, process learnings, and the implicit findings and agreements that emerge from working with an agent all become internal documentation a future session can load. This last category is the most easily missed: when a user corrects *how* the agent works — a preference, a boundary, a rule about what to ask versus assume — that correction is a durable finding, not a passing instruction. It belongs in the project's rules file, and if it is left in the transcript it will be re-learned by re-making the same mistake.
+
+**2. Protect — verify changes and prevent regressions.** A record of how something was verified is worth little unless verification actually happens, and happens against a signal that cannot be talked out of a verdict. The system requires every entry to state its verification and defines the principles that verification obeys (§9 of `setup-protocol.md` covers eliciting the mechanism; the principles are in `templates/CLAUDE.md`).
+
+**3. Propagate — keep external content current with each release.** Marketing copy, user documentation, and store listings must track the product. This is the pillar most often left entirely undone, because it is nobody's job and nothing fails when it is skipped.
+
+### Why "product management" rather than "documentation"
+
+Documentation is one output of this system, not its purpose. The system spans the product lifecycle: capturing what was learned during development, protecting the product against regression, and propagating changes outward to everything a user reads.
+
+Product marketing sits inside that scope as a lifecycle step, even though in most organisations marketing and product management are separate functions in separate departments. The separation is organisational, not logical — the release that changes a behaviour and the sentence on a website describing that behaviour are the same fact, recorded twice, and treating them as separate concerns is precisely how the second one goes stale.
+
 ---
 
 ## 2. Structure
@@ -159,8 +175,29 @@ Every product has surfaces the user sees that are not the product itself:
 - a **marketing website**
 - **user documentation** — often part of the marketing site, sometimes separate
 - **store or marketplace listings** — for anything distributed through a platform: mobile apps, browser extensions, plugin marketplaces, package registries. A project may have several, because listings multiply by *store* × *channel* (stable, beta) and each is edited and reviewed independently.
+- **demo environments** — see below; sometimes a surface, sometimes not.
 
-These drift by default. They are written once at launch, and every subsequent product change makes them a little less true. Nobody notices, because nothing fails.
+### Demo environments are a separate axis
+
+A **demo** is a running instance of the product that exists to be looked at. A **marketing site** is copy that describes the product. They are frequently confused because for some products they are the same artifact, and the confusion produces a bucket that is either too narrow or misnamed.
+
+Three arrangements, all common:
+
+| Arrangement | What the demo is | Treat it as |
+|---|---|---|
+| **Demo is the marketing site** | The product renders the site that sells it — common where the product is itself a site-building or presentation tool | One surface. Content changes are marketing changes |
+| **Demo is a subdomain app** | A live instance at `demo.<product>` or similar, separate from a conventionally-authored marketing site | Two surfaces. The demo's *content* is usually fixture data, not marketing copy |
+| **Demo is a fleet** | Several instances, each showcasing a different use case, audience, or configuration | One surface *per instance*, plus whatever they share |
+
+**Why the distinction earns a place here.** A demo that is also the marketing site makes content edits a marketing concern with real external stakes. A demo that is a separate app makes its content fixtures — changing them is a product task, not a marketing one, and filing it as marketing means genuine marketing drift gets lost among fixture churn. Naming the bucket after the local instance (*"demo content"*) rather than the category (*"product marketing"*) works until a second surface appears, at which point the name misleads.
+
+**A demo fleet multiplies the same way store listings do.** Each instance is independently configured, independently drifts, and needs its own entry — the general rule being that a surface multiplies by every dimension it varies along, whether that dimension is store, channel, or use case.
+
+**Decide at setup** (`setup-protocol.md` → **S10**) which arrangement applies, and name the bucket for the category rather than the instance.
+
+### Drift
+
+These surfaces drift by default. They are written once at launch, and every subsequent product change makes them a little less true. Nobody notices, because nothing fails.
 
 **This is the class of work agents are best suited to and least often given.** Keeping a dozen surfaces consistent with a changing product is exactly the kind of thorough, low-creativity, high-tedium task that humans defer indefinitely.
 

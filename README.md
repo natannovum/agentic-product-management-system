@@ -1,10 +1,16 @@
 # Agentic Product Management System
 
-A documentation and work-tracking system for software projects built with AI coding agents.
+A product-lifecycle system for software built with AI coding agents.
 
-It exists because agents lose knowledge in a specific way: the code records *what* is true and version control records *when* it changed, but neither records why a decision was made, what was tried and rejected, which assumption turned out wrong, or how a change was verified. That knowledge lives in a session transcript that is discarded, held by an agent whose context resets completely. The system makes it durable, in the repository, in a form a fresh session can load and act on.
+It exists because agents lose knowledge in a specific way: the code records *what* is true and version control records *when* it changed, but neither records why a decision was made, what was tried and rejected, which assumption turned out wrong, or how a change was verified. That knowledge lives in a session transcript that is discarded, held by an agent whose context resets completely.
 
-It also treats the product's **published surfaces** — marketing site, user documentation, store listings — as a first-class concern, because keeping a dozen surfaces truthful as a product changes is exactly the thorough, low-creativity, high-tedium work that humans defer indefinitely and agents are good at.
+Three pillars:
+
+- **Capture** — turn development prompts, process learnings, and the implicit findings and agreements that emerge from working with an agent into durable internal reference. Including the easily-missed category: when a user corrects *how* the agent works, that is a finding, not a passing instruction, and left in the transcript it gets re-learned by re-making the mistake.
+- **Protect** — verify changes against a signal that cannot be talked out of a verdict, and prevent regressions.
+- **Propagate** — keep marketing copy, user documentation, and store listings current with each release. The pillar most often left entirely undone, because it is nobody's job and nothing fails when it is skipped.
+
+**Why "product management" rather than "documentation":** documentation is one output, not the purpose. Product marketing sits inside the scope as a lifecycle step, even though in most organisations marketing and product management are separate functions in separate departments. That separation is organisational, not logical — the release that changes a behaviour and the sentence on a website describing that behaviour are the same fact recorded twice, and treating them as separate concerns is precisely how the second one goes stale.
 
 ---
 

@@ -212,6 +212,14 @@ Whether the project runs a single integration branch, or two tiers (an integrati
 
 **Good answer:** one entry per surface — what it is, where authored, where published, who owns it, and how it is updated today. For anything with multiple channels (stable and beta, or several stores), each channel is its own entry, because each is reviewed and published independently.
 
+**Resolve the demo question explicitly** (`system.md` §5). Ask: *"Is there a demo, and is it the same thing as the marketing site or separate?"*
+
+- **Demo is the marketing site** — one surface; content edits are marketing changes with external stakes.
+- **Demo is a separate app** — two surfaces; the demo's content is usually fixture data, and filing it as marketing buries real marketing drift among fixture churn.
+- **Demo is a fleet** of instances showcasing different use cases — one entry per instance, plus whatever they share. A fleet multiplies exactly as store listings do.
+
+**Name the bucket for the category, not the local instance.** *"Demo content"* reads correctly until a second surface appears, and then misleads permanently.
+
 **Then decide the level** (`system.md` §5):
 
 - **MVP** — the repository holds the copy, the agent produces updates, a human publishes. **Recommend this as the starting point.** It captures the value immediately and needs no integration work.
