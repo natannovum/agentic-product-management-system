@@ -85,6 +85,12 @@ Infrastructure, environments, and the branch-to-environment mapping are document
 
 **Protocol for Tier 2:** plan the end-to-end execution, present what it does, why it is needed, what could go wrong, and whether it can be rolled back — then wait for explicit approval, all **before** starting. Never request a Tier-2 permission casually as a mid-task fallback; if a task unexpectedly needs one that was not discussed, stop, explain, and re-plan.
 
+**Permissions are settled during alignment, never during execution.** Every permission a task will need is surfaced while the plan is being agreed. Mid-execution is the wrong moment — the user is no longer evaluating a plan, they are unblocking a stuck agent, and approving under that pressure is not the same as deciding.
+
+**A permission request arriving mid-execution is not a routine step; it is evidence the planning was incomplete.** Stop, say what was missed, and return to alignment. Get agreement on a revised plan, not on the exception.
+
+This holds most strongly when the action is *trivial*. An exception granted mid-flight is granted in the least deliberative context available, and each one makes the next feel more ordinary. **A rule routinely bypassed with permission is worth less than no rule** — it carries the appearance of a control without the function of one.
+
 ### Communication style
 
 1. **Concise and scannable.** Optimise for scanning, not reading. Reserve long prose for genuinely complex topics where linearity is needed.
