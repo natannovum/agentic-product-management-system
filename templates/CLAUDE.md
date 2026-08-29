@@ -57,9 +57,7 @@ Infrastructure, environments, and the branch-to-environment mapping are document
 
 > **SETUP — S5.** Fill in the topology. **Read the CI trigger conditions first — they state authoritatively which branches cause deployments, which is usually decisive.** A branch that triggers a deploy is an environment boundary; a branch that triggers nothing is a convenience.
 >
-> | Branch | Purpose | What happens on merge |
-> |---|---|---|
-> | | | |
+> | Branch | Purpose | What happens on merge | |---|---|---| | | | |
 >
 > **Default:** a single integration branch plus working branches, releases cut by tag. **Do not adopt a "the integration branch must stay release-quality" rule unless something concrete depends on it** — a shared test environment, a staging deploy, other people's work. Without such a dependency it is ceremony, and it will be resented and then ignored.
 
@@ -127,9 +125,7 @@ Rule 5 is the one most often dropped and most worth keeping: it converts a docum
 
 > **SETUP — S10.** Inventory the surfaces: marketing site, user documentation, store or marketplace listings. One entry per surface **and per channel** — stable and beta are separate entries, because each is reviewed and published independently.
 >
-> | Surface | Authored at | Published to | Updated how |
-> |---|---|---|---|
-> | | | | |
+> | Surface | Authored at | Published to | Updated how | |---|---|---|---| | | | | |
 >
 > State the level: **MVP** (repository holds the copy, agent drafts updates, human publishes — recommended starting point) or **Ideal** (agent publishes via API — add to Tier 2).
 >
@@ -172,14 +168,12 @@ Plus `docs/dev-log.md` — cross-concern, one entry per session.
 
 > **SETUP — S2/S3.** Remove any concern this project does not have. Then set the pending-work mode below and delete the mode that does not apply.
 
-**Pending-work mode: A — tracker-backed.** *(Delete if Mode B.)*
-The tracker owns pending work. The `todo-*.md` files are a **committed index** — ticket ID, title, one-line summary, link — so a fresh checkout still shows what is outstanding. Three rules:
+**Pending-work mode: A — tracker-backed.** *(Delete if Mode B.)* The tracker owns pending work. The `todo-*.md` files are a **committed index** — ticket ID, title, one-line summary, link — so a fresh checkout still shows what is outstanding. Three rules:
 - **Closing a ticket is not a change-log entry.** The ticket records that work happened; the log records what changed, why, and how it was checked. Both.
 - **Deferred work becomes a ticket in the same session it is deferred**, with the ID in that session's `dev-log.md` entry and the index updated.
 - **Anything load-bearing for understanding the product lives in the repository, not only in the tracker.** Copy durable insight into `documentation-dev/` before a ticket closes.
 
-**Pending-work mode: B — self-contained.** *(Delete if Mode A.)*
-The `todo-*.md` files are the queue and carry the full weight: item, rationale, specification, prerequisites. **This is a fallback, not the intended design** — markdown has no state field and no forcing function to close anything, so items accumulate and never leave. **Triage periodically:** close what is done, delete what is dead, move specifications into `documentation-dev/`. If triage keeps slipping, adopt a tracker.
+**Pending-work mode: B — self-contained.** *(Delete if Mode A.)* The `todo-*.md` files are the queue and carry the full weight: item, rationale, specification, prerequisites. **This is a fallback, not the intended design** — markdown has no state field and no forcing function to close anything, so items accumulate and never leave. **Triage periodically:** close what is done, delete what is dead, move specifications into `documentation-dev/`. If triage keeps slipping, adopt a tracker.
 
 ### Ordering
 

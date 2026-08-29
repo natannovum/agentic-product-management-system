@@ -9,9 +9,7 @@ Cross-concern executive summary — **one entry per working session**, newest on
 ---
 
 <!-- ============================================================
-     SAMPLE ENTRY — illustrates the expected shape.
-     DELETE THIS BLOCK when writing the first real entry.
-     ============================================================ -->
+SAMPLE ENTRY — illustrates the expected shape. DELETE THIS BLOCK when writing the first real entry. ============================================================ -->
 
 ## Sample — Worker Wakeups Dropped Queued Events — YYYY-MM-DD
 

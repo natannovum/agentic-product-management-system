@@ -14,8 +14,6 @@ Deleting a section makes it unrecoverable *in practice*. It survives in version 
 
 ## Sample — Work Queue (timer-flush design)
 
-> **Retired YYYY-MM-DD.** Superseded by write-through persistence — see `latest-implementation-specs.md` → "Work Queue".
-> **Reason:** the flush interval had to be shorter than an idle threshold that is not contractual and has changed at least once. The design was correct only by coincidence.
-> **Revisit if:** the runtime ever provides a durable termination signal, which would make a timer-based approach safe again.
+> **Retired YYYY-MM-DD.** Superseded by write-through persistence — see `latest-implementation-specs.md` → "Work Queue". **Reason:** the flush interval had to be shorter than an idle threshold that is not contractual and has changed at least once. The design was correct only by coincidence. **Revisit if:** the runtime ever provides a durable termination signal, which would make a timer-based approach safe again.
 
 *(the retired section's original text follows, unmodified)*
