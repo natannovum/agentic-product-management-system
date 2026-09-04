@@ -76,11 +76,13 @@ Product marketing sits inside that scope as a lifecycle step, even though in mos
     ├── dev-log.md                     ← one entry per session; the narrative spine
     ├── change-log-product.md          ← the product itself
     ├── change-log-product-marketing.md← published surfaces (§5)
+    ├── change-log-tooling-and-infrastructure.md ← optional 4th concern (§3)
     ├── change-log-documentation.md    ← this system and the docs themselves
     │
     │   ── PENDING WORK — index into a tracker, or the queue itself (§4) ──
     ├── todo-product.md
     ├── todo-product-marketing.md
+    ├── todo-tooling-and-infrastructure.md
     ├── todo-documentation.md
     │
     │   ── CURRENT-STATE TRUTH — rewritten in place, not history ──
@@ -114,6 +116,7 @@ Records split on two axes — **concern** (which area of work) and **state** (fi
 |---|---|---|
 | **Product** — the thing being built | `change-log-product.md` | `todo-product.md` |
 | **Product marketing** — website, user manual, store listings | `change-log-product-marketing.md` | `todo-product-marketing.md` |
+| **Tooling & infrastructure** *(optional 4th)* — test harness, servers, credentials, provisioning | `change-log-tooling-and-infrastructure.md` | `todo-tooling-and-infrastructure.md` |
 | **Documentation** — this system and the docs themselves | `change-log-documentation.md` | `todo-documentation.md` |
 
 Above the grid sits **`dev-log.md`** — one entry per working session, carrying the narrative. Beside it sits **`documentation-dev/`**, which is not part of the grid and obeys different rules (§6).
@@ -129,6 +132,24 @@ This is the highest-value structural decision in the system.
 Audience and cadence differ. Someone debugging the product does not want to page through a documentation restructure. Someone auditing published copy does not want to read implementation entries. A single undifferentiated log becomes unnavigable somewhere around 200KB, and the failure is gradual enough that nobody notices until it is expensive.
 
 Three concerns is the common shape, not a law. A project with no published surface has two. A project whose user manual is large and independently maintained may split it out as a fourth. `setup-protocol.md` → **S2** decides this.
+
+**The count is a decision that has to be revisited, and there is a symptom that tells you when.** Watch for entries filed somewhere they do not belong because there is nowhere better. In the reference project this ran for months: deployments of the product across a fleet of servers were recorded in the *marketing-content* change log, and the tooling that supports the product — test harness, provisioning scripts, credential handling, server rebuilds — was scattered across all three todo files as level-one initiatives, because none of the three concerns was its home.
+
+**Tooling and infrastructure is the most common fourth concern**, and it is under-recognised precisely because it is not the product and has no user. If a project has a test harness that is itself maintained, servers that are rebuilt, or credentials that rotate, that work needs a concern or it will silently colonise another one.
+
+**The test:** for each concern, ask *what is the audience of this log, and what question do they arrive with?* Two concerns whose readers arrive with the same question should merge; one whose readers arrive with two different questions should split. A deployment log and a marketing-copy log answer nothing in common.
+
+### 🔴 A change log is a RELEASE log; the dev log is a WORK log
+
+The distinction is easy to lose and it decides where every entry goes.
+
+**`dev-log.md` is chronological by work.** One entry per session, whatever was touched, in the order it happened. It is written unconditionally, including for work that ships nothing.
+
+**A change log is chronological by RELEASE.** One entry per release, listing what that release contained — regardless of when the parts were built. Several weeks of work across many merges may land in one entry; a single session's work may not appear until the release that carries it.
+
+Collapsing the two produces a change log that is really a second, worse dev log: an entry per working day, ordered by when someone typed rather than by what shipped, which cannot answer the one question a change log exists for — *what is in the version I am running?*
+
+**Internal change logs may record release candidates and staging deploys**; a customer-facing one may not. A staging deploy is not something a user can observe, and the customer-facing log's job is to describe what they have. The internal ones exist for evidence — what was running where, and when — and that is exactly what an RC entry provides.
 
 ### Why `dev-log.md` sits above the grid
 
@@ -268,6 +289,20 @@ When a section of the current specs is superseded, it moves to the retired file 
 Superseded designs get consulted more often than expected: when a new approach hits a wall the old one had solved, when a regression traces to behaviour that was intentional under the previous design, or when the reason an approach was abandoned answers a current question. Deleting the section makes it unrecoverable in practice — it survives in version history, but nobody performs archaeology on a deleted doc section; the cost of finding it exceeds the cost of re-deriving it badly.
 
 ---
+
+### 🔴 A check must assert the OUTCOME, not the property that changed
+
+The most expensive verification failure is not a missing test. It is a passing one that measures the wrong thing.
+
+A check is usually written after the code, by whoever just changed a property — so it asserts that property. The property is correct. The requirement is not met. In the reference project a layout rule shipped half-working through **1537 assertions, a working negative control and a regression pass over 26 real pages**, because every one of them asked whether a margin was zero rather than whether there was a gap. The margin *was* zero. A second element's padding held the gap open.
+
+Three rules follow, and they are cheap:
+
+1. **Write the requirement as a sentence a user would say, before writing the check.** Assert that sentence. "There is no gap between the header and the first block" is checkable; "margin-top is 0" is a restatement of the diff.
+2. **Every check needs a control whose expected answer is different.** A check that can only return one answer is not a check. Make it structural — a harness that *refuses* a check without a control is worth more than a convention that asks for one.
+3. **Prefer measuring relationships over reading properties.** Give the harness primitives that expose distances between things and withhold the properties that produce them, so the honest check is also the cheaper one to write.
+
+The same failure has a fixture-shaped twin: a control case that is not in the control state. Verify the fixture is in the state you are claiming *before* measuring — including when that state is "the default", which is exactly the assumption nobody checks.
 
 ## 7. What a durable entry contains
 

@@ -59,7 +59,15 @@ Every project-specific decision below follows the same order. **Do not skip ahea
 
 **Good answer:** a concrete list of surfaces, each with where it currently lives and who edits it.
 
-**Default:** three — product, product marketing, documentation. Drop product marketing if there is genuinely no published surface. **Do not create a bucket speculatively:** an empty change log reads as *"nothing has changed here"* rather than *"this is not tracked"*, which is worse than its absence.
+**Also inspect:** does the project maintain tooling or infrastructure that is *itself* worked on — a test harness with its own backlog, servers that get rebuilt, provisioning scripts, credential rotation, a deployment pipeline that is more than one command? Look for a `qa/`, `tools/`, `infra/` or `scripts/` directory with non-trivial history of its own.
+
+**Ask, if so:** *"When you deploy, or fix the test harness, or rotate a credential — where does that get recorded today?"*
+
+**Default:** three — product, product marketing, documentation. Drop product marketing if there is genuinely no published surface. Add **tooling and infrastructure** as a fourth if the answer to the question above is a shrug or a file that plainly is not for it.
+
+**Do not create a bucket speculatively:** an empty change log reads as *"nothing has changed here"* rather than *"this is not tracked"*, which is worse than its absence.
+
+**But do revisit the count later.** The reference project ran on three for months while fleet deployments were filed in the *marketing-content* log and the test-harness backlog was scattered across all three todo files — because none of the three was their home. The symptom to watch for is **entries filed somewhere they do not belong because there is nowhere better**; it is visible in review long before anyone thinks to question the structure. Tooling and infrastructure is the fourth concern most often missed, precisely because it is not the product and has no user.
 
 ---
 
