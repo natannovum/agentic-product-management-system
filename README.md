@@ -96,6 +96,6 @@ MIT — see [`LICENSE`](LICENSE).
 
 ## How this repository is published
 
-It is not edited here. It is a **`git subtree` mirror** of `docs/agentic-product-management-system/` in the private Neutrino repository, pushed by `.github/workflows/publish-apms.yml` on every merge to `dev` that touches that directory.
+It is not edited here. It is a **`git subtree` mirror** of `docs/agentic-product-management-system/` in the private Neutrino repository, pushed by `.github/workflows/publish-agentic-PMS.yml` on every merge to `dev` that touches that directory.
 
 Pull requests against this repository are welcome and are merged back the other way — see the workflow's header for the `git subtree pull` command, and do not resolve a non-fast-forward push by forcing, which discards the contribution.
